@@ -8,7 +8,6 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnRegister;
-    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +17,6 @@ public class MainActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btn_register);
         btnRegister.setOnClickListener(view -> { // we'll pass to CreateAccountActivity through intent
             startActivity(new Intent(this, CreateAccountActivity.class));
-        });
-
-        btnLogin = findViewById(R.id.btn_init_session);
-        btnLogin.setOnClickListener(view -> {
-            startActivity(new Intent(this, LoginActivity.class));
         });
     }
 
