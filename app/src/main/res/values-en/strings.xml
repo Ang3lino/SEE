@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hint_username">nombre</string>
+    <string name="hint_age">edad</string>
+    <string name="hint_location">localidad</string>
+    <string name="hint_password">contraseña</string>
+    <string name="hint_confirm_password">confirmar contraseña</string>
+    <string name="button_join_us">registrarse</string>
+    <string name="error_field_required_username">nombre de usuario requerido</string>
+    <string name="error_field_required_email">email invalido</string>
+    <string name="error_field_required_password">contraseña requerida</string>
+    <string name="error_field_required_confirm_password">las contraseñas no coinciden</string>
+    <string name="exception_sql">Error en SQL Server</string>
+    <string name="exception_class_not_found">Error de la clase</string>
+    <string name="succesful_registration">Gracias por registrarse</string>
+    <string name="repeated_email">Email en uso, use otro</string>
+    <string name="welcome">Cuentra creada exitosamente, ahora puede acceder</string>
+    <string name="repeate_user_message">por favor use otro email.</string>
+</resources>

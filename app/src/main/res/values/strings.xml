@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">SEE</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_select">SelectActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_select2">Select2Activity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_reference">ReferenceActivity</string>
+    <string name="title_activity_create_account">CreateAccountActivity</string>
+    <string name="hint_username">nombre</string>
+    <string name="hint_age">edad</string>
+    <string name="hint_nationality">nacionalidad</string>
+    <string name="hint_curp">curp</string>
+    <string name="hint_location">localidad</string>
+    <string name="hint_email">e-mail</string>
+    <string name="hint_password">contraseña</string>
+    <string name="hint_confirm_password">confirmar contraseña</string>
+    <string name="button_join_us">registrarse</string>
+    <string name="error_field_required_username">nombre de usuario requerido</string>
+    <string name="error_field_required_nationality">nacionalidad requerida</string>
+    <string name="error_field_required_curp">CURP no ingresado</string>
+    <string name="error_field_required_location">ubicacion requerida</string>
+    <string name="error_field_required_email">email invalido</string>
+    <string name="error_field_required_password">contraseña requerida</string>
+    <string name="error_field_required_confirm_password">las contraseñas no coinciden</string>
+    <string name="exception_sql">Error en SQL Server</string>
+    <string name="exception_class_not_found">Error de la clase</string>
+    <string name="succesful_registration">Gracias por registrarse</string>
+    <string name="repeated_email">Email en uso, use otro</string>
+    <string name="welcome">Cuentra creada exitosamente, ahora puede acceder</string>
+    <string name="repeated_user_title">Cuenta ya existente</string>
+    <string name="repeate_user_message">por favor use otro email.</string>
+</resources>
