@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    iconos obtenidos de
+    https://romannurik.github.io/AndroidAssetStudio/icons-generic.html
+    https://icons8.com/icon/set/user/material
+    -->
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".AdministratorOptionsActivity">
 
     <LinearLayout
@@ -18,7 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bienvenido"
-            android:textSize="@dimen/activity_vertical_margin"
+            android:textSize="30dp"
+            android:textColor="@android:color/black"
             />
 
         <TextView
@@ -26,7 +34,8 @@
             android:layout_height="wrap_content"
             android:text="Administrador"
             android:id="@+id/txt_admin"
-            android:textSize="@dimen/activity_vertical_margin"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
             />
 
         <TextView
@@ -34,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="Seleccione la opcion que desea realizar"
             android:textSize="@dimen/activity_vertical_margin"
+            android:textColor="@android:color/black"
             />
 
         <!-- Usamos el espacio de nombre definido app para dar compatibilidad a
@@ -51,10 +61,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="@color/colorAccent"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1"
                 app:cardElevation="8dp"
-                app:cardCornerRadius="40dp"
                 >
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -90,6 +101,7 @@
                 app:layout_rowWeight="1"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="@color/colorAccent"
                 >
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -125,6 +137,7 @@
                 app:layout_rowWeight="1"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="@color/colorAccent"
                 >
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -150,6 +163,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
+                app:cardBackgroundColor="@color/colorAccent"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1"
                 app:cardElevation="8dp"
@@ -179,6 +193,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
+                app:cardBackgroundColor="@color/colorAccent"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1"
                 app:cardElevation="8dp"
@@ -204,12 +219,8 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-
         </android.support.v7.widget.GridLayout>
 
-
-
     </LinearLayout>
-
 
 </android.support.constraint.ConstraintLayout>
