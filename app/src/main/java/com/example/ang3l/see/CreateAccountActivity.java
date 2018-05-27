@@ -102,7 +102,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             } else inputLayoutConfirmPassword.setErrorEnabled(false);
         }
 
-        if (isValid) { // changed from isValid
+        if (isValid) {
             //Toast.makeText(this, "Todo bien", Toast.LENGTH_SHORT).show();
             insertIntoDatabase();
         } else {
@@ -111,17 +111,12 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     TextView test;
-    final String IP = "192.168.1.69"; // cambiala si es necesario
-
-    public String getUrl(String file) {
-        return String.format("http://%s/see_php/%s", IP, file);
-    }
 
     private void insertIntoDatabase() {
         test = findViewById(R.id.txt_test);
         StringRequest request = new StringRequest(
                 Request.Method.POST,
-                getUrl("create_account.php"),
+                VolleyHelper.getHostUrl("create_account.php"),
             response -> {
                 try {
                     JSONArray array = new JSONArray(response);

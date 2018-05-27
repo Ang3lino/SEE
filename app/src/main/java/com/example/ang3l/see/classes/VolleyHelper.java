@@ -12,6 +12,13 @@ public class VolleyHelper { // clase de ayuda para volley tipo singleton
     private RequestQueue requestQueue;
     private static Context context;
 
+    public static final String IP = "192.168.1.69"; // que corresponda a TU servidor
+
+    // suponemos que el script php esta en el directorio see_php
+    public static String getHostUrl(String file) {
+        return String.format("http://%s/see_php/%s", IP, file);
+    }
+
     public RequestQueue getRequestQueue() {
        if (requestQueue == null)
            requestQueue = Volley.newRequestQueue(context.getApplicationContext());
