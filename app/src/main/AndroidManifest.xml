@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <!-- permiso para sql-server -->
-    <uses-permission android:name="android.permission.INTERNET"> </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -35,6 +35,7 @@
             android:name=".CreateAccountActivity"
             android:label="@string/title_activity_create_account"
             android:theme="@style/AppTheme" />
+        <activity android:name=".AdministratorOptionsActivity"></activity>
     </application>
 
 </manifest>
