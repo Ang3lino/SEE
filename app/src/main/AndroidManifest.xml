@@ -25,15 +25,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity
             android:name=".SelectActivity"
             android:label="@string/title_activity_select" />
-        <activity
-            android:name=".Select2Activity"
-            android:label="@string/title_activity_select2"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ReferenceActivity"
             android:label="@string/title_activity_reference"
