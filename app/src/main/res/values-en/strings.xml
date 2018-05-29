@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hint_username">nombre</string>
-    <string name="hint_age">edad</string>
-    <string name="hint_location">localidad</string>
-    <string name="hint_password">contraseña</string>
-    <string name="hint_confirm_password">confirmar contraseña</string>
-    <string name="button_join_us">registrarse</string>
-    <string name="error_field_required_username">nombre de usuario requerido</string>
+    <string name="hint_username">name</string>
+    <string name="hint_age">age</string>
+    <string name="hint_location">location</string>
+    <string name="hint_password">password</string>
+    <string name="hint_confirm_password">confirm password</string>
+    <string name="button_join_us">register</string>
+    <string name="error_field_required_username">username required</string>
     <string name="error_field_required_email">email invalido</string>
-    <string name="error_field_required_password">contraseña requerida</string>
+    <string name="error_field_required_password">password required</string>
     <string name="error_field_required_confirm_password">las contraseñas no coinciden</string>
     <string name="exception_sql">Error en SQL Server</string>
     <string name="exception_class_not_found">Error de la clase</string>
-    <string name="succesful_registration">Gracias por registrarse</string>
+    <string name="succesful_registration">Thank you for register with us</string>
     <string name="repeated_email">Email en uso, use otro</string>
-    <string name="welcome">Cuentra creada exitosamente, ahora puede acceder</string>
-    <string name="repeate_user_message">por favor use otro email.</string>
-    <string name="logout">Cerrar sesión</string>
-    <string name="leave_app">cerrar app</string>
+    <string name="welcome">welcome</string>
+    <string name="repeate_user_message">please, use another e-mail</string>
+    <string name="logout">Close session</string>
+    <string name="leave_app">close app</string>
     <string name="welcome_new_user">Cuenta creada exitosamente, gracias por registrarse con nosotros</string>
+    <string name="dont_u_have_account">don\'t you have account?</string>
+    <string name="register_here">register here</string>
 </resources>

@@ -87,7 +87,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No tiene cuenta?"
+                        android:text="@string/dont_u_have_account"
                         android:gravity="center"
                         android:padding="10dp"
                         />
@@ -95,7 +95,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="registrese aqui"
+                        android:text="@string/register_here"
                         android:padding="10dp"
                         android:id="@+id/txt_register"
                         android:textColor="#4585ed"

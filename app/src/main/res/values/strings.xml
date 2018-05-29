@@ -49,4 +49,6 @@
     <string name="logout">Cerrar sesión</string>
     <string name="leave_app">cerrar app</string>
     <string name="welcome_new_user">Cuenta creada exitosamente, gracias por registrarse con nosotros</string>
+    <string name="dont_u_have_account">¿no tiene cuenta?</string>
+    <string name="register_here">registrese aqui</string>
 </resources>
