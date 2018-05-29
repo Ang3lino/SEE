@@ -12,7 +12,7 @@ public class ChooseRoleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_role);
 
-        toolbar = findViewById(R.id.toolbar_choose_role);
-        setSupportActionBar(toolbar); // le damos soporte a los pobres
+//        toolbar = findViewById(R.id.toolbar_choose_role);
+//        setSupportActionBar(toolbar); // le damos soporte a los pobres
     }
 }
