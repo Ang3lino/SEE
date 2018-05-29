@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnJumper = findViewById(R.id.btn_jumper);
         btnJumper.setOnClickListener(view -> { // pasamos a una actividad a probar
-            startActivity(new Intent(this, AdministratorOptionsActivity.class));
+            startActivity(new Intent(this, ChooseRoleActivity.class));
         });
     }
 
