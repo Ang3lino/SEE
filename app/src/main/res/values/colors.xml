@@ -2,14 +2,15 @@
 
 <!--colores generados de https://www.materialpalette.com/orange/lime -->
 <!--v0-->
-<resources>
+
+<!--<resources>
     <color name="colorPrimary">#009688</color>
     <color name="colorPrimaryDark">#00796B</color>
     <color name="colorAccent">#CDDC39</color>
-</resources>
+</resources>-->
 
-<!--<resources>
+<resources>
     <color name="colorPrimary">#FF9800</color>
     <color name="colorPrimaryDark">#F57C00</color>
     <color name="colorAccent">#F57C00</color>
-</resources>-->
+</resources>
