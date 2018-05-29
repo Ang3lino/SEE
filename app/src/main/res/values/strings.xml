@@ -46,4 +46,6 @@
     <string name="welcome">Cuentra creada exitosamente, ahora puede acceder</string>
     <string name="repeated_user_title">Cuenta ya existente</string>
     <string name="repeate_user_message">por favor use otro email.</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="leave_app">cerrar app</string>
 </resources>
