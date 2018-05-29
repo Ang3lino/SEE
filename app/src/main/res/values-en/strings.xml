@@ -18,4 +18,5 @@
     <string name="repeate_user_message">por favor use otro email.</string>
     <string name="logout">Cerrar sesión</string>
     <string name="leave_app">cerrar app</string>
+    <string name="welcome_new_user">Cuenta creada exitosamente, gracias por registrarse con nosotros</string>
 </resources>

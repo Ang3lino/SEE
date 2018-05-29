@@ -123,7 +123,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     JSONObject object = array.getJSONObject(0);
                     String success = object.getString("success");
                     if (success.contains("true")) {
-                        builder.setTitle(R.string.welcome);
+                        builder.setTitle(R.string.welcome_new_user);
                         builder.setMessage("Gracias por unirse a nuestra comunidad");
                     } else if (success.contains("false")) {
                         builder.setTitle(R.string.repeated_user_title);

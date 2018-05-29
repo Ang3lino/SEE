@@ -9,7 +9,10 @@
     android:layout_height="match_parent"
     tools:context=".ChooseRoleActivity">
 
-    <include layout="@layout/toolbar_choose_role" > </include>
+    <include
+        layout="@layout/toolbar_choose_role"
+        android:id="@+id/toolbar_choose_role">
+    </include>
 
 
     <!--atributo para poner un item debajo de toolbar-->

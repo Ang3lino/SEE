@@ -43,9 +43,10 @@
     <string name="exception_class_not_found">Error de la clase</string>
     <string name="succesful_registration">Gracias por registrarse</string>
     <string name="repeated_email">Email en uso, use otro</string>
-    <string name="welcome">Cuentra creada exitosamente, ahora puede acceder</string>
+    <string name="welcome">Bienvenido</string>
     <string name="repeated_user_title">Cuenta ya existente</string>
     <string name="repeate_user_message">por favor use otro email.</string>
     <string name="logout">Cerrar sesión</string>
     <string name="leave_app">cerrar app</string>
+    <string name="welcome_new_user">Cuenta creada exitosamente, gracias por registrarse con nosotros</string>
 </resources>
