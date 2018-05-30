@@ -147,9 +147,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
     }
 
-    private boolean userChoseImage() {
-        return bitmap != null;
-    }
+    private boolean userChoseImage() { return bitmap != null; }
 
     TextView test;
 
