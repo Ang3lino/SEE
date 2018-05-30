@@ -7,8 +7,10 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    <!-- permiso para sql-server -->
+    <!-- permiso para internet neces. para volley -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- acceso a imagenes guardadas -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"

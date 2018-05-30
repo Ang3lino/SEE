@@ -43,7 +43,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:text="@string/welcome" />
+                    android:text="@string/welcome"
+                    />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"

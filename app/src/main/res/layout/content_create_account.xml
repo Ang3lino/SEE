@@ -24,6 +24,42 @@
             android:id="@+id/linear_layout"
             >
 
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                >
+
+                <!--scaleType="fitStart" lo pone a la izquierda-->
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/logoa"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registro"
+                    android:textSize="30dp"
+                    android:textAppearance="?android:textAppearanceLarge" />
+
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/imgbtn_register_profile"
+                android:src="@mipmap/ic_supervisor_account"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -1,12 +1,17 @@
 package com.example.ang3l.see;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,7 +47,10 @@ public class CreateAccountActivity extends AppCompatActivity {
             inputLayoutEmail,
             inputLayoutPassword,
             inputLayoutConfirmPassword;
+    private ImageButton imgbtnProfile;
+    private Bitmap bitmap;
     //private TextInputLayout inputLayoutNationality, inputLayoutCurp;
+    private final int IMG_REQ = 1;
 
     private AlertDialog.Builder builder;
 
@@ -52,10 +61,37 @@ public class CreateAccountActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btn_register_create_account);
         initWidgets();
         btnRegister.setOnClickListener(view -> onRegisterClicked(view));
+        imgbtnProfile.setOnClickListener(v -> selectImage());
+    }
+
+    private void selectImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, IMG_REQ);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == IMG_REQ && resultCode == RESULT_OK && data != null) {
+            Uri path = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+                imgbtnProfile.setImageBitmap(bitmap);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
     private void initWidgets() {
         builder = new AlertDialog.Builder(this);
+
+        imgbtnProfile = findViewById(R.id.imgbtn_register_profile);
+
         txtUsername = (EditText) findViewById(R.id.username);
         //txtNationality = (EditText) findViewById(R.id.nationality);
         //txtCurp = (EditText) findViewById(R.id.curp);
