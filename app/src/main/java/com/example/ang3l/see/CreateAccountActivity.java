@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -139,6 +141,13 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
     }
 
+    private String imageToString(Bitmap bm) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imgBytes = baos.toByteArray();
+        return Base64.encodeToString(imgBytes, Base64.DEFAULT);
+    }
+
     TextView test;
 
     private void insertIntoDatabase() {
@@ -163,7 +172,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-                test.setText(response.toString());
+                test.setText(response);
             },
                 error -> { // si el servidor esta apagado nos vamos aqui
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
@@ -177,6 +186,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 params.put("location", txtLocation.getText().toString());
                 params.put("email", txtEmail.getText().toString().trim());
                 params.put("password", txtPassword.getText().toString());
+                params.put("perfil", imageToString(bitmap));
                 return params;
             }
         };
