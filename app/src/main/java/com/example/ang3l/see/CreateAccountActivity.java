@@ -79,7 +79,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
                 imgbtnProfile.setImageBitmap(bitmap);
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -148,6 +147,10 @@ public class CreateAccountActivity extends AppCompatActivity {
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
     }
 
+    private boolean userChoseImage() {
+        return bitmap != null;
+    }
+
     TextView test;
 
     private void insertIntoDatabase() {
@@ -186,7 +189,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                 params.put("location", txtLocation.getText().toString());
                 params.put("email", txtEmail.getText().toString().trim());
                 params.put("password", txtPassword.getText().toString());
-                params.put("perfil", imageToString(bitmap));
+                if (userChoseImage()) params.put("perfil", imageToString(bitmap));
+                else params.put("perfil", ""); // php interpretara _POST['perfil'] como null
                 return params;
             }
         };
