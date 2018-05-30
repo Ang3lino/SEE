@@ -41,7 +41,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             txtEmail,
             txtPassword,
             txtConfirmPassword;
-    //private EditText txtCurp, txtNationality;
     private TextInputLayout inputLayoutUsername,
             inputLayoutLocation,
             inputLayoutEmail,
@@ -49,8 +48,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             inputLayoutConfirmPassword;
     private ImageButton imgbtnProfile;
     private Bitmap bitmap;
-    //private TextInputLayout inputLayoutNationality, inputLayoutCurp;
-    private final int IMG_REQ = 1;
+    public static final int IMG_REQ = 1;
 
     private AlertDialog.Builder builder;
 
@@ -83,7 +81,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 
@@ -92,17 +89,13 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         imgbtnProfile = findViewById(R.id.imgbtn_register_profile);
 
-        txtUsername = (EditText) findViewById(R.id.username);
-        //txtNationality = (EditText) findViewById(R.id.nationality);
-        //txtCurp = (EditText) findViewById(R.id.curp);
-        txtLocation = (EditText) findViewById(R.id.location);
-        txtEmail = (EditText) findViewById(R.id.email);
-        txtPassword = (EditText) findViewById(R.id.password);
-        txtConfirmPassword = (EditText) findViewById(R.id.confirmPassword);
+        txtUsername = findViewById(R.id.username);
+        txtLocation = findViewById(R.id.location);
+        txtEmail = findViewById(R.id.email);
+        txtPassword = findViewById(R.id.password);
+        txtConfirmPassword = findViewById(R.id.confirmPassword);
 
         inputLayoutUsername = findViewById(R.id.text_layout_username);
-        //inputLayoutNationality = findViewById(R.id.text_layout_nationality);
-        //inputLayoutCurp = findViewById(R.id.text_layout_curp);
         inputLayoutLocation = findViewById(R.id.text_layout_location);
         inputLayoutEmail = findViewById(R.id.text_layout_email);
         inputLayoutPassword = findViewById(R.id.text_layout_password);
