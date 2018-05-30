@@ -72,52 +72,11 @@
                     android:hint="@string/hint_username"/>
             </android.support.design.widget.TextInputLayout>
 
-            <!--
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/age"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_age"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_layout_nationality"
-                >
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/nationality"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_nationality"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_layout_curp"
-                >
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/curp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_curp"/>
-            </android.support.design.widget.TextInputLayout>
-            -->
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/text_layout_location"
                 >
-
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/location"
                     android:layout_width="match_parent"
@@ -130,7 +89,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/text_layout_email"
                 >
-
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
@@ -143,7 +101,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/text_layout_password"
                 >
-
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
@@ -157,7 +114,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/text_layout_confirm_password"
                 >
-
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/confirmPassword"
                     android:layout_width="match_parent"
@@ -165,6 +121,30 @@
                     android:hint="@string/hint_confirm_password"
                     android:inputType="textPassword"/>
             </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sexo"/>
+
+            <RadioGroup
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:text="hombre"
+                    android:id="@+id/radbtn_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radbtn_female"
+                    android:text="mujer" />
+            </RadioGroup>
 
             <Button
                 android:id="@+id/btn_register_create_account"
