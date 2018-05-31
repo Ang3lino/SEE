@@ -45,8 +45,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private Button btnRegister, btnBirthday;
     private EditText txtUsername,
-            txtLocation,
-            txtEmail,
+            txtLocation, txtEmail,
             txtPassword,
             txtConfirmPassword;
     private TextInputLayout inputLayoutUsername,
@@ -69,7 +68,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         initWidgets();
-        btnRegister.setOnClickListener(this::onRegisterClicked);
+        btnRegister.setOnClickListener(view -> onRegisterClicked(view));
         imgbtnProfile.setOnClickListener(v -> selectImage());
         btnBirthday.setOnClickListener(v -> onBirthdayClicked(v));
     }
@@ -91,6 +90,9 @@ public class CreateAccountActivity extends AppCompatActivity {
         dpd.show();
     }
 
+    /**
+     * se instancia un intento para poder leer las imagenes del dispositivo
+     */
     private void selectImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -98,6 +100,12 @@ public class CreateAccountActivity extends AppCompatActivity {
         startActivityForResult(intent, IMG_REQ);
     }
 
+    /**
+     * Metodo llamado en respuesta de una actividad donde se retorna un codigo esperado
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -179,6 +187,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Dado un bitmap no nulo transformamos la imagen sin perder resolucion
+     * @param bm
+     * @return
+     */
     private String imageToString(Bitmap bm) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -229,7 +242,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 params.put("fecha_nacimiento", txtBirthday.getText().toString());
 
                 if (radbtnMale.isChecked()) params.put("sexo", "m");
-                else if (radbtnFemale.isChecked()) params.put("sexo", "f");
+                else params.put("sexo", "f");
 
                 if (userChoseImage()) params.put("perfil", imageToString(bitmap));
                 else params.put("perfil", ""); // php interpretara _POST['perfil'] como null

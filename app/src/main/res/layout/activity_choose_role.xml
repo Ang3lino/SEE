@@ -22,14 +22,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="10dp"
-        android:weightSum="1"
+        android:weightSum="100"
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="15dp"
-            android:layout_weight="0.6"
+            android:layout_weight="40"
             >
 
             <ImageView
@@ -45,76 +45,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.4"
             android:orientation="vertical"
-            android:layout_marginTop="30dp"
+            android:gravity="bottom"
+            android:layout_weight="60"
             android:weightSum="3"
             >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
+            <Button
+                android:id="@+id/btn_create_lobby"
+                android:drawableLeft="@mipmap/ic_library_add"
                 android:layout_weight="1"
-                android:weightSum="1"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_library_add"
-                    android:layout_weight="0.3"
-                    />
-                <Button
-                    android:layout_weight="0.7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="crear votacion" />
-            </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="crear votacion" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
+            <Button
+                android:drawableLeft="@mipmap/ic_rowing"
                 android:layout_weight="1"
-                android:weightSum="1"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_rowing"
-                    android:layout_weight="0.3"
-                    />
-                <Button
-                    android:layout_weight="0.7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="unirse a una votacion" />
-            </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="unirse a una votacion" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
+            <Button
+                android:drawableLeft="@mipmap/ic_supervisor_account"
                 android:layout_weight="1"
-                android:weightSum="1"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_supervisor_account"
-                    android:layout_weight="0.3"
-                    />
-                <Button
-                    android:layout_weight="0.7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="seguir administrando" />
-            </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="seguir administrando" />
 
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
