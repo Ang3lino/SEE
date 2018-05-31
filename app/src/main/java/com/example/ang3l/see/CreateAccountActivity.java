@@ -1,18 +1,23 @@
 package com.example.ang3l.see;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,12 +37,13 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
-    private Button btnRegister;
+    private Button btnRegister, btnBirthday;
     private EditText txtUsername,
             txtLocation,
             txtEmail,
@@ -50,18 +56,39 @@ public class CreateAccountActivity extends AppCompatActivity {
             inputLayoutConfirmPassword;
     private ImageButton imgbtnProfile;
     private Bitmap bitmap;
+    private RadioButton radbtnMale, radbtnFemale;
+    private TextView txtBirthday;
+
     public static final int IMG_REQ = 1;
 
     private AlertDialog.Builder builder;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
-        btnRegister = findViewById(R.id.btn_register_create_account);
         initWidgets();
-        btnRegister.setOnClickListener(view -> onRegisterClicked(view));
+        btnRegister.setOnClickListener(this::onRegisterClicked);
         imgbtnProfile.setOnClickListener(v -> selectImage());
+        btnBirthday.setOnClickListener(v -> onBirthdayClicked(v));
+    }
+
+    private void onBirthdayClicked(View view) {
+        Calendar cal = Calendar.getInstance();
+
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+
+        DatePickerDialog dpd = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                txtBirthday.setText(String.format("%d-%d-%d", year, month, dayOfMonth));
+            }
+        }, day, month, year);
+        dpd.show();
     }
 
     private void selectImage() {
@@ -88,7 +115,15 @@ public class CreateAccountActivity extends AppCompatActivity {
     private void initWidgets() {
         builder = new AlertDialog.Builder(this);
 
+        txtBirthday = findViewById(R.id.txt_date_of_birth);
+
+        btnBirthday = findViewById(R.id.bnt_date_of_birth);
+        btnRegister = findViewById(R.id.btn_register_create_account);
+
         imgbtnProfile = findViewById(R.id.imgbtn_register_profile);
+
+        radbtnFemale = findViewById(R.id.radbtn_female);
+        radbtnMale = findViewById(R.id.radbtn_male);
 
         txtUsername = findViewById(R.id.username);
         txtLocation = findViewById(R.id.location);
@@ -104,7 +139,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void onRegisterClicked(View view) {
-        boolean isValid = true;
+        boolean isValid = true; // hasta que se diga lo contrario
         if (txtUsername.getText().toString().isEmpty()) {
             // username layout estara en edo. de error hasta que se diga lo contrario explicitamente con setErrorEnabled
             inputLayoutUsername.setError(getString(R.string.error_field_required_username));
@@ -132,8 +167,12 @@ public class CreateAccountActivity extends AppCompatActivity {
             } else inputLayoutConfirmPassword.setErrorEnabled(false);
         }
 
+        // si ningun radio button se ha seleccionado
+        if (!radbtnFemale.isChecked() && !radbtnMale.isChecked()) isValid = false;
+
+        if (txtBirthday.getText().toString().contains("YYYY-MM-DD")) isValid = false;
+
         if (isValid) {
-            //Toast.makeText(this, "Todo bien", Toast.LENGTH_SHORT).show();
             insertIntoDatabase();
         } else {
             Toast.makeText(this, "Existen campos vacios", Toast.LENGTH_SHORT).show();
@@ -187,8 +226,14 @@ public class CreateAccountActivity extends AppCompatActivity {
                 params.put("location", txtLocation.getText().toString());
                 params.put("email", txtEmail.getText().toString().trim());
                 params.put("password", txtPassword.getText().toString());
+                params.put("fecha_nacimiento", txtBirthday.getText().toString());
+
+                if (radbtnMale.isChecked()) params.put("sexo", "m");
+                else if (radbtnFemale.isChecked()) params.put("sexo", "f");
+
                 if (userChoseImage()) params.put("perfil", imageToString(bitmap));
                 else params.put("perfil", ""); // php interpretara _POST['perfil'] como null
+
                 return params;
             }
         };

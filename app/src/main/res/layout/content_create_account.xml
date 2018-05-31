@@ -129,13 +129,15 @@
                 <Button
                     android:layout_weight="1"
                     android:layout_marginHorizontal="10dp"
+                    android:id="@+id/bnt_date_of_birth"
                     android:text="@string/date_of_birth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:layout_weight="5"
+                    android:id="@+id/txt_date_of_birth"
                     android:layout_marginHorizontal="30dp"
-                    android:text="dia/mes/año"
+                    android:text="YYYY-MM-DD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
