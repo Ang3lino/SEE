@@ -75,19 +75,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hora de inicio" />
+                        android:text="@string/start_voting" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_access_alarm" />
+                        android:src="@mipmap/ic_power_settings" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="xx:xx:xx" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -116,13 +111,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_access_alarm" />
+                        android:src="@mipmap/ic_close" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="xx:xx:xx" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 

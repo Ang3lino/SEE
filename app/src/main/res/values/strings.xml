@@ -52,4 +52,5 @@
     <string name="dont_u_have_account">¿no tiene cuenta?</string>
     <string name="register_here">registrese aqui</string>
     <string name="date_of_birth">fecha de nacimiento</string>
+    <string name="start_voting">iniciar votación</string>
 </resources>
