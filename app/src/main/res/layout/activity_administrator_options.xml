@@ -141,7 +141,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_person_add" />
+                        android:src="@mipmap/ic_person_add" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -170,7 +170,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_chrome_reader_mode" />
+                        android:src="@mipmap/ic_chrome_reader_mode" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -199,7 +199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_timeline" />
+                        android:src="@mipmap/ic_timeline" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
