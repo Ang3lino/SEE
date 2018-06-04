@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_candidate_email"
+            android:id="@+id/txt_postulant_email"
             android:layout_below="@+id/txt_postulant_name"
             android:layout_toEndOf="@+id/img_postulant_profile"
             android:text="e-mail"
