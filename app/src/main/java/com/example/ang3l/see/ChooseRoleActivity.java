@@ -10,6 +10,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+import com.example.ang3l.see.classes.VolleyHelper;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ChooseRoleActivity extends AppCompatActivity {
     Toolbar toolbar;
     Button btnCreateLobby;
@@ -23,8 +35,6 @@ public class ChooseRoleActivity extends AppCompatActivity {
         btnCreateLobby = findViewById(R.id.btn_create_lobby);
         btnCreateLobby.setOnClickListener(this::onClickedCreateLobby);
 
-        Toast.makeText(this, getIntent().getStringExtra("EMAIL"), Toast.LENGTH_LONG).show();
-
         setSupportActionBar(toolbar); // le damos soporte a los pobres
         getSupportActionBar().setTitle("SEE");
         toolbar.setSubtitle("Seleccione");
@@ -32,7 +42,42 @@ public class ChooseRoleActivity extends AppCompatActivity {
 
     private void onClickedCreateLobby(View v) {
         Intent intent = new Intent(this, AdministratorOptionsActivity.class);
+        String emailOfCreator = getIntent().getStringExtra("EMAIL");
+        createLobby(emailOfCreator);
+        intent.putExtra("email", emailOfCreator);
         startActivity(intent);
+    }
+
+    private void createLobby(String email) {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                VolleyHelper.getHostUrl("create_voting_room.php"),
+                response -> { // obtengo la respuesta del servidor
+                    try {
+                        JSONArray array = new JSONArray(response);
+                        JSONObject object = array.getJSONObject(0);
+                        String success = object.getString("inserted");
+                        if (success.contains("false"))
+                            Toast.makeText(this, "Ha habido un error en la creacion de la sala",
+                                    Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                },
+                error -> { // si el servidor esta apagado nos vamos aqui
+                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                return params;
+            }
+        };
+        VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 
     /**
