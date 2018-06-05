@@ -37,16 +37,6 @@ public class WatchPostulantActivity extends AppCompatActivity
         postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "anaya", "anaya@gmail.com") );
         postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "amlo", "amlo@gmail.com") );
         postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "bronco", "bronco@gmail.com") );
-
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "meade", "meade@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "anaya", "anaya@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "amlo", "amlo@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "bronco", "bronco@gmail.com") );
-
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "meade", "meade@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "anaya", "anaya@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "amlo", "amlo@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "bronco", "bronco@gmail.com") );
     }
 
     @Override
@@ -72,10 +62,12 @@ public class WatchPostulantActivity extends AppCompatActivity
     private void buildRecyclerView() {
         recyclerView = findViewById(R.id.recyclerview_candidates);
         recyclerView.setHasFixedSize(true);
+
         layoutManager = new LinearLayoutManager(this);
         adapter = new PostulantAdapter(postulantItems);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
+
 }

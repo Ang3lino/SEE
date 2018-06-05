@@ -2,6 +2,7 @@ package com.example.ang3l.see;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private TextInputLayout txtlayEmail;
     private TextInputLayout txtlayPassword;
 
+    private AlertDialog.Builder builder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         txtlayEmail = findViewById(R.id.txtlay_email);
         txtlayPassword = findViewById(R.id.txtlay_password);
+
+        builder = new AlertDialog.Builder(this);
     }
 
     // llamada si se intenta iniciar sesion
@@ -77,15 +82,11 @@ public class MainActivity extends AppCompatActivity {
             allFilledFields = false;
         } else txtlayPassword.setErrorEnabled(false);
 
-        if (allFilledFields)
-            validUser = askDBvalidUser();
-        else
-            Toast.makeText(this, "Campos vacios", Toast.LENGTH_LONG).show();
+        if (allFilledFields) askDBvalidUser();
+        else Toast.makeText(this, "Campos vacios", Toast.LENGTH_LONG).show();
     }
 
-    private boolean askDBvalidUser() {
-        final boolean[] accepted = new boolean[1]; // atomic variable
-
+    private void askDBvalidUser() {
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 VolleyHelper.getHostUrl("login.php"),
@@ -95,16 +96,16 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject object = array.getJSONObject(0);
                         String success = object.getString("success");
                         if (success.contains("true")) {
-                            Toast.makeText(getApplicationContext(), "Acceptado", Toast.LENGTH_LONG).show();
-                            accepted[0] = true;
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Rechazado", Toast.LENGTH_LONG).show();
-                            accepted[0] = false;
+                            startActivity(new Intent(this, ChooseRoleActivity.class));
+                        } else if (success.contains("false")) {
+                            builder.setTitle("Usuario no registrado");
+                            builder.setMessage("Por favor, cree una cuenta");
+                            builder.show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                 },
                 error -> { // si el servidor esta apagado nos vamos aqui
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
@@ -120,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
-        return accepted[0];
     }
 
 

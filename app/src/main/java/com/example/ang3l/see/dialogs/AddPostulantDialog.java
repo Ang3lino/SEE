@@ -9,8 +9,16 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
 import com.example.ang3l.see.R;
+import com.example.ang3l.see.classes.VolleyHelper;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AddPostulantDialog extends AppCompatDialogFragment {
     private TextView txtEmail;
@@ -34,6 +42,45 @@ public class AddPostulantDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
+//    private boolean isCandidateInDB() {
+//        String toFind = txtEmail.getText().toString();
+//        StringRequest request = new StringRequest(
+//                Request.Method.POST,
+//                VolleyHelper.getHostUrl("login.php"),
+//                response -> { // obtengo la respuesta del servidor
+//                    try {
+//                        JSONArray array = new JSONArray(response);
+//                        JSONObject object = array.getJSONObject(0);
+//                        String success = object.getString("success");
+//                        if (success.contains("true")) {
+//                            Toast.makeText(getApplicationContext(), "Acceptado", Toast.LENGTH_LONG).show();
+//                            accepted[0] = true;
+//                        } else {
+//                            Toast.makeText(getApplicationContext(), "Rechazado", Toast.LENGTH_LONG).show();
+//                            accepted[0] = false;
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+//                },
+//                error -> { // si el servidor esta apagado nos vamos aqui
+//                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+//                    error.printStackTrace();
+//                }
+//        ) {
+//            @Override // le pasamos los datos del celular medianto un HashMap
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("email", txtEmail.getText().toString().trim());
+//                params.put("password", txtPassword.getText().toString());
+//                return params;
+//            }
+//        };
+//        VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
+//        return accepted[0];
+//    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -41,10 +88,13 @@ public class AddPostulantDialog extends AppCompatDialogFragment {
             listener = (AddPostulantDialogListener) context;
         } catch (ClassCastException exc) {
             throw new ClassCastException(context.toString() +
-                "must implement AddPostulantDialogListener");
+                " must implement AddPostulantDialogListener");
         }
     }
 
+    /**
+     * Interfaz interna necesaria para comunicara datos a otra actividad, esta tiene que implementarla
+     */
     public interface AddPostulantDialogListener {
         void applyText(String email);
     }
