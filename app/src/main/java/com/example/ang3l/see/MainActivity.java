@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     // llamada si se intenta iniciar sesion
     private void onClickedLogin(View view) {
-        boolean allFilledFields = true, validUser = false;
+        boolean allFilledFields = true;
 
         if (txtEmail.getText().toString().isEmpty()) {
             txtlayEmail.setError(getString(R.string.error_field_required_email));
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         else Toast.makeText(this, "Campos vacios", Toast.LENGTH_LONG).show();
     }
 
+    // we need to pass email to other activity
     private void askDBvalidUser() {
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -96,7 +97,9 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject object = array.getJSONObject(0);
                         String success = object.getString("success");
                         if (success.contains("true")) {
-                            startActivity(new Intent(this, ChooseRoleActivity.class));
+                            Intent intent = new Intent(this, ChooseRoleActivity.class);
+                            intent.putExtra("EMAIL", object.getString("email"));
+                            startActivity(intent);
                         } else if (success.contains("false")) {
                             builder.setTitle("Usuario no registrado");
                             builder.setMessage("Por favor, cree una cuenta");
@@ -122,6 +125,5 @@ public class MainActivity extends AppCompatActivity {
         };
         VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
-
 
 }

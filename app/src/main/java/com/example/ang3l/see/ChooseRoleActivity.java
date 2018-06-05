@@ -23,6 +23,8 @@ public class ChooseRoleActivity extends AppCompatActivity {
         btnCreateLobby = findViewById(R.id.btn_create_lobby);
         btnCreateLobby.setOnClickListener(this::onClickedCreateLobby);
 
+        Toast.makeText(this, getIntent().getStringExtra("EMAIL"), Toast.LENGTH_LONG).show();
+
         setSupportActionBar(toolbar); // le damos soporte a los pobres
         getSupportActionBar().setTitle("SEE");
         toolbar.setSubtitle("Seleccione");
