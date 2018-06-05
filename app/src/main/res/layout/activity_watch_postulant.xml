@@ -20,7 +20,7 @@
 
     <Button
         android:layout_weight="1"
-        android:id="@+id/button"
+        android:id="@+id/btn_add_postulant_show_dialog"
         android:layout_width="match_parent"
         android:text="agregar candidato"
         android:layout_height="wrap_content"
