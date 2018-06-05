@@ -1,6 +1,7 @@
 package com.example.ang3l.see.dialogs;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +14,7 @@ import com.example.ang3l.see.R;
 
 public class AddPostulantDialog extends AppCompatDialogFragment {
     private TextView txtEmail;
+    private AddPostulantDialogListener listener;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -22,20 +24,28 @@ public class AddPostulantDialog extends AppCompatDialogFragment {
 
         builder.setView(view)
                 .setTitle("Agregar candidato")
-                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                .setNegativeButton("cancel", (dialog, which) -> {
 
-                    }
                 })
-                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
+                .setPositiveButton("ok", (dialog, which) -> {
+                    listener.applyText(txtEmail.getText().toString());
                 });
         txtEmail = view.findViewById(R.id.txt_add_candidate_email_dialog);
         return builder.create();
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (AddPostulantDialogListener) context;
+        } catch (ClassCastException exc) {
+            throw new ClassCastException(context.toString() +
+                "must implement AddPostulantDialogListener");
+        }
+    }
+
+    public interface AddPostulantDialogListener {
+        void applyText(String email);
+    }
 }

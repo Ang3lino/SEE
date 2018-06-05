@@ -6,18 +6,24 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.ang3l.see.dialogs.AddPostulantDialog;
 import com.example.ang3l.see.items.PostulantItem;
 
 import java.util.ArrayList;
 
-public class WatchPostulantActivity extends AppCompatActivity {
+public class WatchPostulantActivity extends AppCompatActivity
+    implements AddPostulantDialog.AddPostulantDialogListener {
     private ArrayList<PostulantItem> postulantItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private Button btnAddPostulant;
+
+    public void applyText(String email) {
+        Toast.makeText(this, email, Toast.LENGTH_LONG).show();
+    }
 
     private void initPostulantItems() {
         postulantItems = new ArrayList<>();
@@ -55,7 +61,6 @@ public class WatchPostulantActivity extends AppCompatActivity {
 
     private void initWidget() {
         btnAddPostulant = findViewById(R.id.btn_add_postulant_show_dialog);
-
         btnAddPostulant.setOnClickListener(this::openDialog);
     }
 
