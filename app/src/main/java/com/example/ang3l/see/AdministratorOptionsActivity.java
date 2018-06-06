@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AdministratorOptionsActivity extends AppCompatActivity implements View.OnClickListener {
+
     private CardView cardStartVoting;
     private CardView cardFinalizeVoting;
     private CardView cardAddPostulant;

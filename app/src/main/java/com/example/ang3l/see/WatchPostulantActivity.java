@@ -9,12 +9,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+import com.example.ang3l.see.classes.VolleyHelper;
 import com.example.ang3l.see.classes.VotingRoom;
 import com.example.ang3l.see.dialogs.AddPostulantDialog;
 import com.example.ang3l.see.items.PostulantItem;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WatchPostulantActivity extends AppCompatActivity
         implements AddPostulantDialog.AddPostulantDialogListener {
@@ -25,16 +34,44 @@ public class WatchPostulantActivity extends AppCompatActivity
     private RecyclerView.LayoutManager layoutManager;
     private FloatingActionButton fabAddPostulant;
 
-    private VotingRoom room;
-
     private void initPostulantItems() {
-        postulantItems = new ArrayList<>();
-
         postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "meade", "meade@gmail.com") );
         postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "anaya", "anaya@gmail.com") );
         postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "amlo", "amlo@gmail.com") );
         postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "bronco", "bronco@gmail.com") );
+    }
 
+    private void fillListFromDB() {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                VolleyHelper.getHostUrl("candidate_registered.php"),
+                response -> { // obtengo la respuesta del servidor
+                    try {
+                        JSONArray array = new JSONArray(response);
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject postulant = array.getJSONObject(i);
+                            String name = postulant.getString("name");
+                            String email = postulant.getString("email");
+                            postulantItems.add(new PostulantItem(R.mipmap.ic_postulant, name, email));
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                },
+                error -> {
+                    error.printStackTrace();
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("number", "" + VotingRoom.get().getNumber());
+                return params;
+            }
+        };
+        VolleyHelper.getInstance(this).addToRequestQueue(request);
     }
 
     @Override
@@ -43,11 +80,13 @@ public class WatchPostulantActivity extends AppCompatActivity
         setContentView(R.layout.activity_watch_postulant);
 
         initWidget();
-        initPostulantItems();
+        fillListFromDB();
         buildRecyclerView();
     }
 
     private void initWidget() {
+        postulantItems = new ArrayList<>();
+
         fabAddPostulant = findViewById(R.id.fab_add_postulant_show_dialog);
         fabAddPostulant.setOnClickListener(this::openDialogAdd);
     }
