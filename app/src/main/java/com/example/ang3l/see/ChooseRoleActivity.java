@@ -1,6 +1,7 @@
 package com.example.ang3l.see;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,11 +15,14 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.example.ang3l.see.classes.VolleyHelper;
+import com.example.ang3l.see.classes.VotingRoom;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +30,7 @@ public class ChooseRoleActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Button btnCreateLobby;
     private int roomId;
+    private Gson gs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class ChooseRoleActivity extends AppCompatActivity {
         btnCreateLobby = findViewById(R.id.btn_create_lobby);
         btnCreateLobby.setOnClickListener(this::onClickedCreateLobby);
 
+        gs = new Gson();
         setSupportActionBar(toolbar); // le damos soporte a los pobres
         getSupportActionBar().setTitle("SEE");
         toolbar.setSubtitle("Seleccione");
@@ -45,7 +51,8 @@ public class ChooseRoleActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AdministratorOptionsActivity.class);
         String emailOfCreator = getIntent().getStringExtra("EMAIL");
         createLobby(emailOfCreator);
-        intent.putExtra("email", emailOfCreator);
+        VotingRoom room = new VotingRoom(roomId, false, emailOfCreator);
+        intent.putExtra("room", gs.toJson(room));
         startActivity(intent);
     }
 
