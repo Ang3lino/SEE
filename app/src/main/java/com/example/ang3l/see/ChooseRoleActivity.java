@@ -58,11 +58,17 @@ public class ChooseRoleActivity extends AppCompatActivity {
                         JSONArray array = new JSONArray(response);
                         JSONObject object = array.getJSONObject(0);
                         String success = object.getString("inserted");
+                        Toast.makeText(this, response, Toast.LENGTH_LONG).show();
                         if (success.contains("false"))
-                            Toast.makeText(this, "Ha habido un error en la creacion de la sala, por favor, intente otra vez",
-                                    Toast.LENGTH_SHORT).show();
-                        else
+                            Toast.makeText(
+                                this,
+                                "Ha habido un error en la creacion de la sala, por favor, intente otra vez",
+                                Toast.LENGTH_SHORT
+                            ).show();
+                        else {
                             roomId = object.getInt("number");
+                            Toast.makeText(this, "" + roomId, Toast.LENGTH_SHORT).show();
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
