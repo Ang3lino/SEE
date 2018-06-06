@@ -21,10 +21,6 @@ public class WatchPostulantActivity extends AppCompatActivity
     private RecyclerView.LayoutManager layoutManager;
     private Button btnAddPostulant;
 
-    public void applyText(String email) {
-        Toast.makeText(this, email, Toast.LENGTH_LONG).show();
-    }
-
     private void initPostulantItems() {
         postulantItems = new ArrayList<>();
 
@@ -33,10 +29,6 @@ public class WatchPostulantActivity extends AppCompatActivity
         postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "amlo", "amlo@gmail.com") );
         postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "bronco", "bronco@gmail.com") );
 
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "meade", "meade@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "anaya", "anaya@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "amlo", "amlo@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "bronco", "bronco@gmail.com") );
     }
 
     @Override
@@ -51,12 +43,24 @@ public class WatchPostulantActivity extends AppCompatActivity
 
     private void initWidget() {
         btnAddPostulant = findViewById(R.id.btn_add_postulant_show_dialog);
-        btnAddPostulant.setOnClickListener(this::openDialog);
+        btnAddPostulant.setOnClickListener(this::openDialogAdd);
     }
 
-    private void openDialog(View view) {
+    private void openDialogAdd(View view) {
         AddPostulantDialog dialog = new AddPostulantDialog();
+
         dialog.show(getSupportFragmentManager(), "Candidatos");
+    }
+
+    public void applyText(String email, String name) {
+        int pos = 0;
+        if (email.isEmpty() || name.isEmpty()) {
+            Toast.makeText(this, "E-mail no registrado", Toast.LENGTH_LONG).show();
+        }
+        else  {
+            postulantItems.add(pos, new PostulantItem(R.mipmap.ic_postulant, name, email));
+            adapter.notifyItemInserted(pos);
+        }
     }
 
     private void buildRecyclerView() {
