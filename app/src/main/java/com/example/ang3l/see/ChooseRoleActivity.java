@@ -23,8 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChooseRoleActivity extends AppCompatActivity {
-    Toolbar toolbar;
-    Button btnCreateLobby;
+    private Toolbar toolbar;
+    private Button btnCreateLobby;
+    private int roomId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +59,10 @@ public class ChooseRoleActivity extends AppCompatActivity {
                         JSONObject object = array.getJSONObject(0);
                         String success = object.getString("inserted");
                         if (success.contains("false"))
-                            Toast.makeText(this, "Ha habido un error en la creacion de la sala",
+                            Toast.makeText(this, "Ha habido un error en la creacion de la sala, por favor, intente otra vez",
                                     Toast.LENGTH_SHORT).show();
+                        else
+                            roomId = object.getInt("number");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

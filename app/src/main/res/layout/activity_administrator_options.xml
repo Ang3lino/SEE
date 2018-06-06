@@ -57,6 +57,7 @@
             app:useDefaultMargins="true">
 
             <android.support.v7.widget.CardView
+                android:id="@+id/cardview_start_voting"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
@@ -87,6 +88,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/cardview_finalize_voting"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
@@ -147,6 +149,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/cardview_watch_integrants"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
@@ -176,6 +179,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/cardview_trends"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
