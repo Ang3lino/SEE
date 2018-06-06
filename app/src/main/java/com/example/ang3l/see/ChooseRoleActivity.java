@@ -51,8 +51,6 @@ public class ChooseRoleActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AdministratorOptionsActivity.class);
         String emailOfCreator = getIntent().getStringExtra("EMAIL");
         createLobby(emailOfCreator);
-        VotingRoom room = new VotingRoom(roomId, false, emailOfCreator);
-        intent.putExtra("room", gs.toJson(room));
         startActivity(intent);
     }
 
@@ -75,6 +73,7 @@ public class ChooseRoleActivity extends AppCompatActivity {
                         else {
                             roomId = object.getInt("number");
                             Toast.makeText(this, "" + roomId, Toast.LENGTH_SHORT).show();
+                            VotingRoom room = VotingRoom.init(roomId, false, email);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

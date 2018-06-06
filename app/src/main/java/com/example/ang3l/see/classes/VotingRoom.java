@@ -5,28 +5,50 @@ public class VotingRoom {
     private boolean activated; // can we vote ?
     private String creator; // email of creator
 
-    public VotingRoom(int number, boolean activated, String creator) {
+    private static VotingRoom self;
+
+    public static synchronized VotingRoom init(int number, boolean activated, String creator) {
+        if (self == null)
+            self = new VotingRoom(number, activated, creator);
+        return self;
+    }
+
+    /**
+     * retorna una unica instancia, es importante haberla creado previamente
+     * @return self
+     */
+    public static synchronized VotingRoom get() {
+        return self;
+    }
+
+    private VotingRoom(int number, boolean activated, String creator) {
         this.number = number;
         this.activated = activated;
         this.creator = creator;
     }
 
     public void setNumber(int number) {
-        this.number = number;
+        self.number = number;
     }
 
     public void setActivated(boolean activated) {
-        this.activated = activated;
+        self.activated = activated;
     }
 
     public void setCreator(String creator) {
-        this.creator = creator;
+        self.creator = creator;
     }
 
-    public int getNumber() { return number; }
+    public int getNumber() {
+        return self.number;
+    }
 
-    public String getCreator() { return creator; }
+    public String getCreator() {
+        return self.creator;
+    }
 
-    public boolean isActivated() { return activated; }
+    public boolean isActivated() {
+        return self.activated;
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.example.ang3l.see.dialogs;
 
 import android.app.Dialog;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.example.ang3l.see.R;
 import com.example.ang3l.see.classes.VolleyHelper;
+import com.example.ang3l.see.classes.VotingRoom;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +35,7 @@ public class AddPostulantDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.add_postulant_email_dialog, null);
 
+        txtEmail = view.findViewById(R.id.txt_add_candidate_email_dialog);
         builder.setView(view)
                 .setTitle("Agregar candidato")
                 .setNegativeButton("cancel", (dialog, which) -> { })
@@ -45,9 +48,10 @@ public class AddPostulantDialog extends AppCompatDialogFragment {
                                     JSONArray array = new JSONArray(response);
                                     JSONObject object = array.getJSONObject(0);
                                     String exists = object.getString("exists");
-                                    if (exists.contains("true"))
+                                    if (exists.contains("true")) {
+                                        String inserted = object.getString("inserted");
                                         listener.applyText(object.getString("email"), object.getString("name"));
-                                    else
+                                    } else
                                         listener.applyText("", "");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -60,12 +64,12 @@ public class AddPostulantDialog extends AppCompatDialogFragment {
                         protected Map<String, String> getParams() {
                             Map<String, String> params = new HashMap<>();
                             params.put("email", txtEmail.getText().toString());
+                            params.put("number", "" + VotingRoom.get().getNumber());
                             return params;
                         }
                     };
                     VolleyHelper.getInstance(getActivity()).addToRequestQueue(request);
                 });
-        txtEmail = view.findViewById(R.id.txt_add_candidate_email_dialog);
         return builder.create();
     }
 

@@ -28,7 +28,6 @@ public class AdministratorOptionsActivity extends AppCompatActivity {
     private CardView cardTrends;
 
     private VotingRoom room;
-    private Gson gs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +39,7 @@ public class AdministratorOptionsActivity extends AppCompatActivity {
     }
 
     private void initWidgets() {
-        gs = new Gson();
-        room = gs.fromJson(getIntent().getStringExtra("room"), VotingRoom.class);
+        room = VotingRoom.get();
 
         cardStartVoting = findViewById(R.id.cardview_start_voting);
         cardFinalizeVoting = findViewById(R.id.cardview_finalize_voting);
