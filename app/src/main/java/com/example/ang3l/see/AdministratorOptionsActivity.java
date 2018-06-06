@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.example.ang3l.see.classes.VolleyHelper;
@@ -20,7 +21,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AdministratorOptionsActivity extends AppCompatActivity {
+public class AdministratorOptionsActivity extends AppCompatActivity implements View.OnClickListener {
     private CardView cardStartVoting;
     private CardView cardFinalizeVoting;
     private CardView cardAddPostulant;
@@ -47,14 +48,50 @@ public class AdministratorOptionsActivity extends AppCompatActivity {
         cardWatchIntegrants = findViewById(R.id.cardview_watch_integrants);
         cardTrends = findViewById(R.id.cardview_trends);
 
-        cardStartVoting.setOnClickListener(this::onStartVotingClicked);
         cardAddPostulant.setOnClickListener(v -> {
             startActivity(new Intent(this, WatchPostulantActivity.class));
         });
+
+        cardStartVoting.setOnClickListener(this);
+        cardFinalizeVoting.setOnClickListener(this);
     }
 
-    private void onStartVotingClicked(View v) {
-
+    @Override
+    public void onClick(View v) {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                VolleyHelper.getHostUrl("room_switch.php"),
+                response -> { // obtengo la respuesta del servidor
+                    try {
+                        JSONArray array = new JSONArray(response);
+                        JSONObject object = array.getJSONObject(0);
+                        boolean success = object.getBoolean("success");
+                        if (!success)
+                            Toast.makeText(this, "Error al cambiar el estado, pruebe otra vez",
+                                    Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(this, "Actualizacion realizada", Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+//                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                },
+                error -> { // si el servidor esta apagado nos vamos aqui
+                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                }
+        ) {
+            @Override // le pasamos los datos del celular medianto un HashMap
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                String activate;
+                if (v.getId() == R.id.cardview_start_voting) activate = "true";
+                else activate = "false";
+                params.put("control", activate);
+                params.put("number", "" + VotingRoom.get().getNumber());
+                return params;
+            }
+        };
+        VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
-
 }
