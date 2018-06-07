@@ -39,7 +39,9 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".AdministratorOptionsActivity" />
         <activity android:name=".ChooseRoleActivity" />
-        <activity android:name=".WatchPostulantActivity"></activity>
+        <activity android:name=".WatchPostulantActivity" />
+        <activity android:name=".GenericUserOptionsActivity" />
+        <activity android:name=".BoletaActivity"></activity>
     </application>
 
 </manifest>

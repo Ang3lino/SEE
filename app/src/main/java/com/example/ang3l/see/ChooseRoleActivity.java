@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,9 +29,15 @@ import java.util.Map;
 
 public class ChooseRoleActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private Button btnCreateLobby;
+    private Button btnCreateLobby, btnJoinLobby;
+    private TextView txtNumber;
+
     private int roomId;
+
     private Gson gs;
+            // f: 01347075
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +45,62 @@ public class ChooseRoleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_role);
 
         toolbar = findViewById(R.id.toolbar_choose_role);
-        btnCreateLobby = findViewById(R.id.btn_create_lobby);
-        btnCreateLobby.setOnClickListener(this::onClickedCreateLobby);
 
-        gs = new Gson();
+        findAllViewsById();
+
         setSupportActionBar(toolbar); // le damos soporte a los pobres
         getSupportActionBar().setTitle("SEE");
         toolbar.setSubtitle("Seleccione");
+    }
+
+    private void findAllViewsById() {
+        btnCreateLobby = findViewById(R.id.btn_create_lobby);
+        btnCreateLobby.setOnClickListener(this::onClickedCreateLobby);
+
+        txtNumber = findViewById(R.id.txt_room_number);
+
+        btnJoinLobby = findViewById(R.id.btn_join_room);
+        btnJoinLobby.setOnClickListener(this::onClickedJoinLobby);
+
+        gs = new Gson();
+    }
+
+    private void onClickedJoinLobby(View view) {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                VolleyHelper.getHostUrl("verify_room_existence.php"),
+                response -> { // obtengo la respuesta del servidor
+                    try {
+                        JSONArray array = new JSONArray(response);
+                        JSONObject object = array.getJSONObject(0);
+                        if (object.getBoolean("exists")) {
+                            VotingRoom room = VotingRoom.init(
+                                    Integer.parseInt(txtNumber.getText().toString()),
+                                    false,
+                                    getIntent().getStringExtra("EMAIL"));
+                            startActivity(new Intent(this, GenericUserOptionsActivity.class));
+                            Toast.makeText(this, "existe", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "no existe", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                },
+                error -> { // si el servidor esta apagado nos vamos aqui
+                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                }
+        ) {
+            @Override // le pasamos los datos del celular medianto un HashMap
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("number", txtNumber.getText().toString().trim());
+                return params;
+            }
+        };
+        VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 
     private void onClickedCreateLobby(View v) {

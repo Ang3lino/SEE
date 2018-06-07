@@ -124,7 +124,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_library_add_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_remove_red_eye_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -147,8 +147,8 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\ANGEL\Downloads\election (2).png" />
-                                      <entry key="outputName" value="ic_postulant" />
+                                      <entry key="imageAsset" value="C:\Users\ANGEL\Downloads\crystal-ball.png" />
+                                      <entry key="outputName" value="ic_cristal_ball" />
                                     </map>
                                   </option>
                                 </PersistentState>
