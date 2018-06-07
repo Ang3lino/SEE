@@ -42,6 +42,10 @@
         <activity android:name=".WatchPostulantActivity" />
         <activity android:name=".GenericUserOptionsActivity" />
         <activity android:name=".BoletaActivity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
