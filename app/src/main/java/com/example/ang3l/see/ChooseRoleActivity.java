@@ -79,9 +79,8 @@ public class ChooseRoleActivity extends AppCompatActivity {
                                     false,
                                     getIntent().getStringExtra("EMAIL"));
                             startActivity(new Intent(this, GenericUserOptionsActivity.class));
-                            Toast.makeText(this, "existe", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(this, "no existe", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "la sala no existe", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

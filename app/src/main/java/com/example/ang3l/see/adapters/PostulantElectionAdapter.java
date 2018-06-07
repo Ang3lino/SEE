@@ -41,7 +41,6 @@ public class PostulantElectionAdapter
 
         holder.name.setText(name);
         holder.match.setText(match);
-
     }
 
     @Override
