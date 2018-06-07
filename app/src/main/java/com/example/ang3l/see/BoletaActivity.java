@@ -13,6 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.example.ang3l.see.adapters.PostulantElectionAdapter;
 import com.example.ang3l.see.classes.VolleyHelper;
+import com.example.ang3l.see.classes.Voter;
 import com.example.ang3l.see.classes.VotingRoom;
 import com.example.ang3l.see.items.PostulantElectionItem;
 
@@ -31,7 +32,6 @@ public class BoletaActivity extends AppCompatActivity implements PostulantElecti
     private RecyclerView recycler;
     private PostulantElectionAdapter adapter;
     private ArrayList<PostulantElectionItem> postulants;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,7 @@ public class BoletaActivity extends AppCompatActivity implements PostulantElecti
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("number", "" + VotingRoom.get().getNumber());
+                params.put("email", Voter.getInstance().getEmail());
                 return params;
             }
         };
@@ -95,7 +96,38 @@ public class BoletaActivity extends AppCompatActivity implements PostulantElecti
 
     @Override
     public void onItemClick(int position) {
-        PostulantElectionItem current = postulants.get(position); // aqui me dormi, tengo que implementar el script para registrat voto
-
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                VolleyHelper.getHostUrl("voting_intent.php"),
+                response -> { // obtengo la respuesta del servidor
+                    try {
+                        JSONArray array = new JSONArray(response);
+                        JSONObject object = array.getJSONObject(0);
+                        boolean changed = object.getBoolean("changed");
+                        if (changed)
+                            Toast.makeText(this, "Su voto fue cambiado", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(this, "Voto efectuado correctamente", Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+//                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                },
+                error -> { // si el servidor esta apagado nos vamos aqui
+                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                }
+        ) {
+            @Override // le pasamos los datos del celular medianto un HashMap
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                PostulantElectionItem current = postulants.get(position);
+                params.put("number", "" + VotingRoom.get().getNumber());
+                params.put("email", Voter.getInstance().getEmail());
+                params.put("post_email", current.getEmail());
+                return params;
+            }
+        };
+        VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 }

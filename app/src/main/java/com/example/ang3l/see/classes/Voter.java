@@ -11,6 +11,10 @@ public class Voter {
         return self;
     }
 
+    public static synchronized Voter getInstance() {
+        return self;
+    }
+
     public static void init(String email, String name) {
         self = new Voter(email, name);
     }
