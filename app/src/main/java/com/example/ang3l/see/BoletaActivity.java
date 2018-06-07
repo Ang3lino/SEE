@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class BoletaActivity extends AppCompatActivity {
+public class BoletaActivity extends AppCompatActivity implements PostulantElectionAdapter.OnItemClickListener {
     private TextView txtTitle;
 
     private RecyclerView recycler;
@@ -55,11 +55,12 @@ public class BoletaActivity extends AppCompatActivity {
                             JSONObject object = array.getJSONObject(i);
                             String name = object.getString("name");
                             String match = object.getString("match");
+                            String email = object.getString("email");
                             if (match.contains("null")) match = "partido sin definir";
-
-                            postulants.add( new PostulantElectionItem(name, match) );
+                            postulants.add( new PostulantElectionItem(name, match, email) );
                         }
                         adapter = new PostulantElectionAdapter(this, postulants);
+                        adapter.setOnItemClickListener(this);
                         recycler.setAdapter(adapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -90,5 +91,11 @@ public class BoletaActivity extends AppCompatActivity {
     private void initAll() {
         postulants = new ArrayList<>();
         txtTitle = findViewById(R.id.txt_electoral_process);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        PostulantElectionItem current = postulants.get(position);
+
     }
 }

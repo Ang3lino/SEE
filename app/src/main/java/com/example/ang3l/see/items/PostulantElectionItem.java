@@ -1,11 +1,12 @@
 package com.example.ang3l.see.items;
 
 public class PostulantElectionItem {
-    private String name, match;
+    private String name, match, email;
 
-    public PostulantElectionItem(String name, String match) {
+    public PostulantElectionItem(String name, String match, String email) {
         this.name = name;
         this.match = match;
+        this.email = email;
     }
 
     public String getName() {
@@ -15,4 +16,9 @@ public class PostulantElectionItem {
     public String getMatch() {
         return match;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
 }

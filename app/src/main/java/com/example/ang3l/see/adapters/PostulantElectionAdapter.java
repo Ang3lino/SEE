@@ -19,6 +19,40 @@ public class PostulantElectionAdapter
         extends RecyclerView.Adapter<PostulantElectionAdapter.PostulantViewHolder> {
     private Context context;
     private ArrayList<PostulantElectionItem> list;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    // La clase interna debe ser publica
+    public class PostulantViewHolder extends RecyclerView.ViewHolder {
+        public TextView name;
+        public TextView match;
+        public TextView email;
+        public ImageView profile;
+
+        public PostulantViewHolder(View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.txt_candidate_election_name);
+            match = itemView.findViewById(R.id.txt_match_election);
+            email = itemView.findViewById(R.id.txt_email_candidate_election);
+            profile = itemView.findViewById(R.id.img_candidate_election);
+
+            itemView.setOnClickListener(view -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(position);
+                    }
+                }
+            });
+        }
+    }
 
     public PostulantElectionAdapter(Context context, ArrayList<PostulantElectionItem> list) {
         this.context = context;
@@ -33,14 +67,21 @@ public class PostulantElectionAdapter
         return new PostulantViewHolder(v);
     }
 
+    /**
+     * Metodo que sera llamado cada que una vista entre a la pantalla
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull PostulantViewHolder holder, int position) {
         PostulantElectionItem current = list.get(position);
         String name = current.getName();
         String match = current.getMatch();
+        String email = current.getEmail();
 
         holder.name.setText(name);
         holder.match.setText(match);
+        holder.email.setText(email);
     }
 
     @Override
@@ -48,17 +89,4 @@ public class PostulantElectionAdapter
         return list.size();
     }
 
-    // La clase interna debe ser publica
-    public class PostulantViewHolder extends RecyclerView.ViewHolder {
-        public TextView name;
-        public TextView match;
-        public ImageView profile;
-
-        public PostulantViewHolder(View itemView) {
-            super(itemView);
-            name = itemView.findViewById(R.id.txt_candidate_election_name);
-            match = itemView.findViewById(R.id.txt_match_election);
-            profile = itemView.findViewById(R.id.img_candidate_election);
-        }
-    }
 }
