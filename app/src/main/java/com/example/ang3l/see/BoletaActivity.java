@@ -95,7 +95,7 @@ public class BoletaActivity extends AppCompatActivity implements PostulantElecti
 
     @Override
     public void onItemClick(int position) {
-        PostulantElectionItem current = postulants.get(position);
+        PostulantElectionItem current = postulants.get(position); // aqui me dormi, tengo que implementar el script para registrat voto
 
     }
 }

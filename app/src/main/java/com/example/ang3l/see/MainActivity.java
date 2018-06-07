@@ -14,6 +14,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.example.ang3l.see.classes.VolleyHelper;
+import com.example.ang3l.see.classes.Voter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         if (success.contains("true")) {
                             Intent intent = new Intent(this, ChooseRoleActivity.class);
                             intent.putExtra("EMAIL", object.getString("email"));
+                            Voter.init(object.getString("email"), object.getString("nombre"));
                             startActivity(intent);
                         } else if (success.contains("false")) {
                             builder.setTitle("Usuario no registrado");
