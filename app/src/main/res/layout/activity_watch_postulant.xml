@@ -5,12 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="100"
     tools:context=".WatchPostulantActivity">
 
 
     <android.support.v7.widget.RecyclerView
-        android:layout_weight="99"
         android:id="@+id/recyclerview_candidates"
         android:padding="5dp"
         android:scrollbars="vertical"

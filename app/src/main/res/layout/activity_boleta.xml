@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimaryLight"
         android:orientation="vertical">
 
         <TextView
@@ -25,22 +26,18 @@
 
         <TextView
             android:id="@+id/textView2"
+            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Seleccione el recuadro de su preferencia"
             android:textSize="20sp" />
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_candidates"
+            android:padding="5dp"
+            android:scrollbars="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Emitir Voto" />
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 

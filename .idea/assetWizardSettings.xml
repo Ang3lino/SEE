@@ -147,8 +147,8 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\ANGEL\Downloads\crystal-ball.png" />
-                                      <entry key="outputName" value="ic_cristal_ball" />
+                                      <entry key="imageAsset" value="C:\Users\ANGEL\Downloads\politician.png" />
+                                      <entry key="outputName" value="ic_politician" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -167,6 +167,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>
