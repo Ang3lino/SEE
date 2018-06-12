@@ -1,6 +1,7 @@
 package com.example.ang3l.see;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //  Fixed Portrait orientation
+
         initWidgets();
 
         txtRegister = findViewById(R.id.txt_register);
