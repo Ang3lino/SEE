@@ -11,11 +11,13 @@ import com.example.ang3l.see.classes.VolleyHelper;
 import com.example.ang3l.see.classes.VotingRoom;
 import com.example.ang3l.see.items.PostulantElectionItem;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,12 +29,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TrendsActivity extends AppCompatActivity {
-    private BarChart barChart;
+    private HorizontalBarChart barChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trends);
+
+        barChart = findViewById(R.id.barchar_trends);
         buildBarChart();
     }
 
@@ -48,15 +52,15 @@ public class TrendsActivity extends AppCompatActivity {
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject currentObject = array.getJSONObject(i);
                             float count = (float) currentObject.getInt("count");
-                            String name = currentObject.getString("name");
-                            entries.add(new BarEntry(count, i));
+                            String name = currentObject.getString("nombre");
+                            entries.add(new BarEntry(i, count));
                             labels.add(name);
                         }
-                        BarDataSet dataset = new BarDataSet(entries, "# of calls");
-                        BarChart chart = new BarChart(this);
-                        setContentView(chart);
-                        BarData data = new BarData((IBarDataSet) labels, dataset);
-                        chart.setData(data);
+                        BarDataSet dataSet = new BarDataSet(entries, "Candidatos");
+                        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+                        BarData data = new BarData(dataSet);
+                        barChart.setData(data);
+                        barChart.invalidate();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

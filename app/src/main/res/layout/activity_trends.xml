@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".TrendsActivity">
 
-    <com.github.mikephil.charting.charts.BarChart
+    <com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/barchar_trends"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.github.mikephil.charting.charts.BarChart>
+    </com.github.mikephil.charting.charts.HorizontalBarChart>
 
 </android.support.constraint.ConstraintLayout>
