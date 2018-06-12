@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,6 +32,8 @@ public class AdministratorOptionsActivity extends AppCompatActivity implements V
 
     private VotingRoom room;
 
+    private TextView txtRoomNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,9 @@ public class AdministratorOptionsActivity extends AppCompatActivity implements V
 
     private void initWidgets() {
         room = VotingRoom.get();
+
+        txtRoomNumber = findViewById(R.id.txt_room_number);
+        txtRoomNumber.setText("" + VotingRoom.get().getNumber());
 
         cardStartVoting = findViewById(R.id.cardview_start_voting);
         cardFinalizeVoting = findViewById(R.id.cardview_finalize_voting);
@@ -72,6 +78,7 @@ public class AdministratorOptionsActivity extends AppCompatActivity implements V
                                     Toast.LENGTH_SHORT).show();
                         else
                             Toast.makeText(this, "Actualizacion realizada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, response, Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

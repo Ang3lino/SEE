@@ -44,7 +44,7 @@ public class WatchPostulantActivity extends AppCompatActivity
     private void fillListFromDB() {
         StringRequest request = new StringRequest(
                 Request.Method.POST,
-                VolleyHelper.getHostUrl("candidate_registered.php"),
+                VolleyHelper.getHostUrl("get_candidates_array.php"),
                 response -> { // obtengo la respuesta del servidor
                     try {
                         JSONArray array = new JSONArray(response);
@@ -54,11 +54,11 @@ public class WatchPostulantActivity extends AppCompatActivity
                             String email = postulant.getString("email");
                             postulantItems.add(new PostulantItem(R.mipmap.ic_postulant, name, email));
                         }
-
+                        adapter.notifyDataSetChanged();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                 },
                 error -> {
                     error.printStackTrace();
@@ -80,8 +80,8 @@ public class WatchPostulantActivity extends AppCompatActivity
         setContentView(R.layout.activity_watch_postulant);
 
         initWidget();
-        fillListFromDB();
         buildRecyclerView();
+        fillListFromDB();
     }
 
     private void initWidget() {
