@@ -12,10 +12,12 @@ import com.example.ang3l.see.classes.VotingRoom;
 import com.example.ang3l.see.items.PostulantElectionItem;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.DataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
@@ -60,6 +62,7 @@ public class TrendsActivity extends AppCompatActivity {
                         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
                         BarData data = new BarData(dataSet);
                         barChart.setData(data);
+                        barChart.getXAxis().setValueFormatter(new LabelFormatter(labels.toArray(new String[labels.size()])));
                         barChart.invalidate();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -80,4 +83,19 @@ public class TrendsActivity extends AppCompatActivity {
         };
         VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
+
+
+    public class LabelFormatter implements IAxisValueFormatter {
+        private final String[] mLabels;
+
+        public LabelFormatter(String[] labels) {
+            mLabels = labels;
+        }
+
+        @Override
+        public String getFormattedValue(float value, AxisBase axis) {
+            return mLabels[(int) value];
+        }
+    }
+
 }
