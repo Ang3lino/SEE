@@ -54,6 +54,9 @@ public class AdministratorOptionsActivity extends AppCompatActivity implements V
         cardAddPostulant = findViewById(R.id.cardview_add_postulant);
         cardWatchIntegrants = findViewById(R.id.cardview_watch_integrants);
         cardTrends = findViewById(R.id.cardview_trends);
+        cardTrends.setOnClickListener(v -> {
+            startActivity(new Intent(this, TrendsActivity.class));
+        });
 
         cardAddPostulant.setOnClickListener(v -> {
             startActivity(new Intent(this, WatchPostulantActivity.class));

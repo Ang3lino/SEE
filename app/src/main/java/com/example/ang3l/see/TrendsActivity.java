@@ -50,7 +50,7 @@ public class TrendsActivity extends AppCompatActivity {
                     try {
                         JSONArray array = new JSONArray(response);
                         ArrayList<BarEntry> entries = new ArrayList<>();
-                        ArrayList<String> labels = new ArrayList<>();
+                        ArrayList<String> labels = new ArrayList<>(); // etiquetas
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject currentObject = array.getJSONObject(i);
                             float count = (float) currentObject.getInt("count");
@@ -58,16 +58,16 @@ public class TrendsActivity extends AppCompatActivity {
                             entries.add(new BarEntry(i, count));
                             labels.add(name);
                         }
-                        BarDataSet dataSet = new BarDataSet(entries, "Candidatos");
+                        BarDataSet dataSet = new BarDataSet(entries, "Candidatos"); // titulo
                         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
                         BarData data = new BarData(dataSet);
-                        barChart.setData(data);
+                        barChart.setData(data); // ponemos el dato a una variable ya instanciada
                         barChart.getXAxis().setValueFormatter(new LabelFormatter(labels.toArray(new String[labels.size()])));
-                        barChart.invalidate();
+                        barChart.invalidate(); // actualiza ?
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                 },
                 error -> { // si el servidor esta apagado nos vamos aqui
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
@@ -84,7 +84,10 @@ public class TrendsActivity extends AppCompatActivity {
         VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 
-
+    /**
+     * Clase con la cual podemos poner etiquetas en las graficas, un arreglo como argumento del
+     * constructor es necesario para esto.
+     */
     public class LabelFormatter implements IAxisValueFormatter {
         private final String[] mLabels;
 

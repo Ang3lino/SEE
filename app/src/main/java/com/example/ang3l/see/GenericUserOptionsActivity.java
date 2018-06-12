@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GenericUserOptionsActivity extends AppCompatActivity {
-    private CardView cardVote, cardTrend;
+    private CardView cardVote, cardTrend, cardPrediction;
     private FloatingActionButton fabSudo;
     private TextView txtRoomNumber;
 
@@ -48,11 +48,54 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        cardPrediction = findViewById(R.id.cardview_predictions);
+        cardPrediction.setOnClickListener(this::probableCandidate);
+
         txtRoomNumber = findViewById(R.id.txt_room_number);
         txtRoomNumber.setText("" + VotingRoom.get().getNumber());
 
         fabSudo = findViewById(R.id.fab_admin_mode);
         isCreator();
+    }
+
+    private void probableCandidate(View view) {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                VolleyHelper.getHostUrl("count_votes.php"),
+                response -> { // obtengo la respuesta del servidor
+                    try {
+                        JSONArray array = new JSONArray(response);
+                        int min = -1;
+                        String dominantCandidate = new String();
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject currentObject = array.getJSONObject(i);
+                            int count = currentObject.getInt("count");
+                            if (count > min) {
+                                min = count;
+                                dominantCandidate = currentObject.getString("nombre");
+                            }
+                        }
+                        Toast.makeText(this,
+                                "Es probable que: " + dominantCandidate +" gane la elecion",
+                                Toast.LENGTH_LONG).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+//                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                },
+                error -> { // si el servidor esta apagado nos vamos aqui
+                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                }
+        ) {
+            @Override // le pasamos los datos del celular medianto un HashMap
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("number", "" + VotingRoom.get().getNumber());
+                return params;
+            }
+        };
+        VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 
     private void isCreator() {
@@ -73,7 +116,7 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                 },
                 error -> { // si el servidor esta apagado nos vamos aqui
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();

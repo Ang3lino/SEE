@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ public class PostulantElectionAdapter
         public TextView match;
         public TextView email;
         public ImageView profile;
+        public Button btn;
 
         public PostulantViewHolder(View itemView) {
             super(itemView);
@@ -42,8 +44,10 @@ public class PostulantElectionAdapter
             match = itemView.findViewById(R.id.txt_match_election);
             email = itemView.findViewById(R.id.txt_email_candidate_election);
             profile = itemView.findViewById(R.id.img_candidate_election);
+            btn = itemView.findViewById(R.id.btn_select_candidate_election);
 
-            itemView.setOnClickListener(view -> {
+            //itemView.setOnClickListener(view -> {
+            btn.setOnClickListener(view -> {
                 if (listener != null) {
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {

@@ -23,6 +23,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/** @author: Lopez Manriquez Angel
+ *
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnLogin;
@@ -53,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
             onClickedLogin(view);
         });
 
-        btnJumper = findViewById(R.id.btn_jumper);
-//        btnJumper.setVisibility(View.GONE);
+        btnJumper = findViewById(R.id.btn_jumper); // boton de prueba
+        btnJumper.setVisibility(View.GONE);
         btnJumper.setOnClickListener(view -> { // pasamos a una actividad a probar
             startActivity(new Intent(this, BoletaActivity.class));
         });

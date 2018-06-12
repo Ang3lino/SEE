@@ -116,7 +116,7 @@ public class ChooseRoleActivity extends AppCompatActivity {
                         JSONArray array = new JSONArray(response);
                         JSONObject object = array.getJSONObject(0);
                         String success = object.getString("inserted");
-                        Toast.makeText(this, response, Toast.LENGTH_LONG).show();
+//                        Toast.makeText(this, response, Toast.LENGTH_LONG).show();
                         if (success.contains("false"))
                             Toast.makeText(
                                 this,
@@ -125,7 +125,7 @@ public class ChooseRoleActivity extends AppCompatActivity {
                             ).show();
                         else {
                             roomId = object.getInt("number");
-                            Toast.makeText(this, "" + roomId, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(this, "" + roomId, Toast.LENGTH_SHORT).show();
                             VotingRoom room = VotingRoom.init(roomId, false, email);
                         }
                     } catch (JSONException e) {
