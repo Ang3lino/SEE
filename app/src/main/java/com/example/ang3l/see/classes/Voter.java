@@ -24,11 +24,11 @@ public class Voter {
         this.name = name;
     }
 
-    public String getName() {
+    public static String getName() {
         return self.name;
     }
 
-    public String getEmail() {
+    public static String getEmail() {
         return self.email;
     }
 

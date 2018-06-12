@@ -8,8 +8,7 @@ public class VotingRoom {
     private static VotingRoom self;
 
     public static synchronized VotingRoom init(int number, boolean activated, String creator) {
-        if (self == null)
-            self = new VotingRoom(number, activated, creator);
+        self = new VotingRoom(number, activated, creator);
         return self;
     }
 

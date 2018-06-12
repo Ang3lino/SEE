@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnJumper = findViewById(R.id.btn_jumper);
-        btnJumper.setVisibility(View.GONE);
+//        btnJumper.setVisibility(View.GONE);
         btnJumper.setOnClickListener(view -> { // pasamos a una actividad a probar
             startActivity(new Intent(this, BoletaActivity.class));
         });
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     // we need to pass email to other activity
     private void askDBvalidUser() {
+
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 VolleyHelper.getHostUrl("login.php"),
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 return params;
             }
         };
+
         VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 

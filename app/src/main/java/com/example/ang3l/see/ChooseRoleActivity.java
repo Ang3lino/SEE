@@ -37,8 +37,6 @@ public class ChooseRoleActivity extends AppCompatActivity {
     private Gson gs;
             // f: 01347075
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
