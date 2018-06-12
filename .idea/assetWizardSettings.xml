@@ -146,9 +146,9 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\ANGEL\Downloads\icon (1).png" />
-                                      <entry key="outputName" value="ic_person_ok" />
+                                      <entry key="backgroundColor" value="fffdda" />
+                                      <entry key="iconShape" value="HRECT" />
+                                      <entry key="imageAsset" value="C:\Users\ANGEL\AndroidStudioProjects\SEE1\app\src\main\res\drawable\logoa.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
