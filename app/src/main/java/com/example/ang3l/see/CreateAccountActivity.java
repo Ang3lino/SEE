@@ -214,18 +214,20 @@ public class CreateAccountActivity extends AppCompatActivity {
                     JSONObject object = array.getJSONObject(0);
                     String success = object.getString("success");
                     if (success.contains("true")) {
-                        builder.setTitle(R.string.welcome_new_user);
-                        builder.setMessage("Gracias por unirse a nuestra comunidad");
+                        builder.setTitle(R.string.welcome_new_user)
+                                .setMessage("Gracias por unirse a nuestra comunidad")
+                                .setCancelable(false)
+                                .setPositiveButton("OK", (dialog, id) -> finish() );
                     } else if (success.contains("false")) {
-                        builder.setTitle(R.string.repeated_user_title);
-                        builder.setMessage(R.string.repeate_user_message);
+                        builder.setTitle(R.string.repeated_user_title)
+                                .setMessage(R.string.repeate_user_message);
                     }
                     builder.show(); // esto tambien se muestra explicitamente, no lo olvides
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-                test.setText(response);
+                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                //test.setText(response);
             },
                 error -> { // si el servidor esta apagado nos vamos aqui
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();

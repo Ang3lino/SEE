@@ -40,7 +40,7 @@ public class AdministratorOptionsActivity extends AppCompatActivity implements V
         setContentView(R.layout.activity_administrator_options);
 
         initWidgets();
-        Toast.makeText(this, room.getCreator(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Ha ingresado como: " + room.getCreator(), Toast.LENGTH_LONG).show();
     }
 
     private void initWidgets() {
@@ -81,7 +81,7 @@ public class AdministratorOptionsActivity extends AppCompatActivity implements V
                                     Toast.LENGTH_SHORT).show();
                         else
                             Toast.makeText(this, "Actualizacion realizada", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(this, response, Toast.LENGTH_LONG).show();
+//                        Toast.makeText(this, response, Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
