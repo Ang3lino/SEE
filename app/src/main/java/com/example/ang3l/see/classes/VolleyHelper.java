@@ -13,7 +13,8 @@ public class VolleyHelper { // clase de ayuda para volley tipo singleton
     private static Context context;
 
 //    public static final String IP = "10.100.73.130"; // que corresponda a TU servidor
-    public static final String IP = "192.168.1.69"; // que corresponda a TU servidor
+//    public static final String IP = "192.168.1.69"; // que corresponda a TU servidor
+    public static final String IP = "10.100.75.182"; // que corresponda a TU servidor
 
     // suponemos que el script php esta en el directorio see_php
     public static String getHostUrl(String file) {
