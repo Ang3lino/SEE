@@ -126,11 +126,6 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
                                 intent.putExtra("isCreator", false);
                                 startActivity(intent);
                             });
-                            cardWatchCandidates.setOnClickListener(v -> {
-                                Intent intent = new Intent(this, WatchPostulantActivity.class);
-                                intent.putExtra("isCreator", false);
-                                startActivity(intent);
-                            });
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
