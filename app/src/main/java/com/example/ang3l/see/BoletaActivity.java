@@ -103,11 +103,17 @@ public class BoletaActivity extends AppCompatActivity implements PostulantElecti
                     try {
                         JSONArray array = new JSONArray(response);
                         JSONObject object = array.getJSONObject(0);
-                        boolean changed = object.getBoolean("changed");
-                        if (changed)
-                            Toast.makeText(this, "Su voto fue cambiado", Toast.LENGTH_SHORT).show();
-                        else
-                            Toast.makeText(this, "Voto efectuado correctamente", Toast.LENGTH_SHORT).show();
+                        if (object.getBoolean("can_we_vote")) {
+                            boolean changed = object.getBoolean("changed");
+                            if (changed)
+                                Toast.makeText(this, "Su voto fue cambiado", Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(this, "Voto efectuado correctamente", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, R.string.deactivated_elections, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, R.string.vote_not_effected, Toast.LENGTH_SHORT).show();
+                        }
+                        Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

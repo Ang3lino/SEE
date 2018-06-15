@@ -54,4 +54,6 @@
     <string name="date_of_birth">fecha de nacimiento</string>
     <string name="start_voting">iniciar votación</string>
     <string name="no_candidate_registered">No se ha registrado ningun candidato</string>
+    <string name="deactivated_elections">elecciones desactivadas</string>
+    <string name="vote_not_effected">voto no efectuado</string>
 </resources>
