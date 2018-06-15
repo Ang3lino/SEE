@@ -37,10 +37,6 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
 
     private void initAll() {
         cardWatchCandidates = findViewById(R.id.cardview_watch_candidates);
-        cardWatchCandidates.setOnClickListener(view -> {
-            Intent intent = new Intent(this, WatchPostulantActivity.class);
-
-        });
 
         cardTrend = findViewById(R.id.cardview_trends);
         cardTrend.setOnClickListener(v -> {
@@ -125,6 +121,11 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
                         }
                         else  {
                             fabSudo.setVisibility(View.GONE);
+                            cardWatchCandidates.setOnClickListener(v -> {
+                                Intent intent = new Intent(this, WatchPostulantActivity.class);
+                                intent.putExtra("isCreator", false);
+                                startActivity(intent);
+                            });
                             cardWatchCandidates.setOnClickListener(v -> {
                                 Intent intent = new Intent(this, WatchPostulantActivity.class);
                                 intent.putExtra("isCreator", false);

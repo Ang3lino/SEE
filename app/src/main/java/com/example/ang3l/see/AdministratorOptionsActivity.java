@@ -59,7 +59,9 @@ public class AdministratorOptionsActivity extends AppCompatActivity implements V
         });
 
         cardAddPostulant.setOnClickListener(v -> {
-            startActivity(new Intent(this, WatchPostulantActivity.class));
+            Intent intent = new Intent(this, WatchPostulantActivity.class);
+            intent.putExtra("isCreator", true);
+            startActivity(intent);
         });
 
         cardStartVoting.setOnClickListener(this);
