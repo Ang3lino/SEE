@@ -76,7 +76,11 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
                                 dominantCandidate = currentObject.getString("nombre");
                             }
                         }
-                        Toast.makeText(this,
+                        if (min == -1)
+                            Toast.makeText(this, R.string.no_candidate_registered,
+                                    Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(this,
                                 "Es probable que: " + dominantCandidate +" gane la elecion",
                                 Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
@@ -148,7 +152,4 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
         VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 
-    private void watchCandidatesClicked(View view) {
-
-    }
 }
