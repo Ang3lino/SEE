@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GenericUserOptionsActivity extends AppCompatActivity {
-    private CardView cardVote, cardTrend, cardPrediction;
+    private CardView cardVote, cardTrend, cardPrediction, cardWatchCandidates;
     private FloatingActionButton fabSudo;
     private TextView txtRoomNumber;
 
@@ -36,10 +36,15 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+        cardWatchCandidates = findViewById(R.id.cardview_watch_candidates);
+        cardWatchCandidates.setOnClickListener(view -> {
+            Intent intent = new Intent(this, WatchPostulantActivity.class);
+
+        });
+
         cardTrend = findViewById(R.id.cardview_trends);
         cardTrend.setOnClickListener(v -> {
-            Intent intent = new Intent(this, TrendsActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(this, TrendsActivity.class));
         });
 
         cardVote = findViewById(R.id.cardview_vote);
@@ -106,13 +111,26 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
                     try {
                         JSONArray array = new JSONArray(response);
                         JSONObject object = array.getJSONObject(0);
-                        if (object.getBoolean("isCreator"))
+                        if (object.getBoolean("isCreator")) {
                             fabSudo.setOnClickListener(v -> {
                                 Intent intent = new Intent(this, AdministratorOptionsActivity.class);
                                 intent.putExtra("id", VotingRoom.get().getNumber());
                                 startActivity(intent);
                             });
-                        else fabSudo.setVisibility(View.GONE);
+                            cardWatchCandidates.setOnClickListener(v -> {
+                                Intent intent = new Intent(this, WatchPostulantActivity.class);
+                                intent.putExtra("isCreator", true);
+                                startActivity(intent);
+                            });
+                        }
+                        else  {
+                            fabSudo.setVisibility(View.GONE);
+                            cardWatchCandidates.setOnClickListener(v -> {
+                                Intent intent = new Intent(this, WatchPostulantActivity.class);
+                                intent.putExtra("isCreator", false);
+                                startActivity(intent);
+                            });
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -132,5 +150,9 @@ public class GenericUserOptionsActivity extends AppCompatActivity {
             }
         };
         VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(request);
+    }
+
+    private void watchCandidatesClicked(View view) {
+
     }
 }

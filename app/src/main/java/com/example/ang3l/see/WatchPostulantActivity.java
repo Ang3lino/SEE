@@ -88,6 +88,8 @@ public class WatchPostulantActivity extends AppCompatActivity
         postulantItems = new ArrayList<>();
 
         fabAddPostulant = findViewById(R.id.fab_add_postulant_show_dialog);
+        if (!getIntent().getExtras().getBoolean("isCreator"))
+            fabAddPostulant.setVisibility(View.GONE);
         fabAddPostulant.setOnClickListener(this::openDialogAdd);
     }
 
