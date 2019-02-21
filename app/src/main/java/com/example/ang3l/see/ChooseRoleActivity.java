@@ -35,7 +35,6 @@ public class ChooseRoleActivity extends AppCompatActivity {
     private int roomId;
 
     private Gson gs;
-            // f: 01347075
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class ChooseRoleActivity extends AppCompatActivity {
 
         findAllViewsById();
 
-        setSupportActionBar(toolbar); // le damos soporte a los pobres
+        setSupportActionBar(toolbar); // le damos soporte a versiones anteriores
         getSupportActionBar().setTitle("SEE");
         toolbar.setSubtitle("Seleccione");
     }
@@ -125,7 +124,7 @@ public class ChooseRoleActivity extends AppCompatActivity {
                             ).show();
                         else {
                             roomId = object.getInt("number");
-//                            Toast.makeText(this, "" + roomId, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "" + roomId, Toast.LENGTH_SHORT).show();
                             VotingRoom room = VotingRoom.init(roomId, false, email);
                         }
                     } catch (JSONException e) {

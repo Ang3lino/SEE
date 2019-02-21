@@ -27,7 +27,6 @@ public class AdministratorOptionsActivity extends AppCompatActivity implements V
     private CardView cardStartVoting;
     private CardView cardFinalizeVoting;
     private CardView cardAddPostulant;
-    private CardView cardWatchIntegrants;
     private CardView cardTrends;
 
     private VotingRoom room;
@@ -47,12 +46,12 @@ public class AdministratorOptionsActivity extends AppCompatActivity implements V
         room = VotingRoom.get();
 
         txtRoomNumber = findViewById(R.id.txt_room_number);
-        txtRoomNumber.setText("" + VotingRoom.get().getNumber());
+        String roomNum = "" + room.getNumber();
+        txtRoomNumber.setText(roomNum);
 
         cardStartVoting = findViewById(R.id.cardview_start_voting);
         cardFinalizeVoting = findViewById(R.id.cardview_finalize_voting);
         cardAddPostulant = findViewById(R.id.cardview_add_postulant);
-        cardWatchIntegrants = findViewById(R.id.cardview_watch_integrants);
         cardTrends = findViewById(R.id.cardview_trends);
         cardTrends.setOnClickListener(v -> {
             startActivity(new Intent(this, TrendsActivity.class));
