@@ -75,7 +75,7 @@
                     android:id="@+id/btn_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="iniciar sesion" />
+                    android:text="@string/start_session" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

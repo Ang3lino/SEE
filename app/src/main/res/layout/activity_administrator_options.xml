@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bienvenido a la sala: "
+                android:text="@string/welcome_to_the_room"
                 android:textSize="30dp"
                 android:textColor="@android:color/black"
                 />
@@ -58,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Seleccione la opcion que desea realizar"
+            android:text="@string/select_ur_option"
             android:textSize="@dimen/activity_vertical_margin"
             android:textColor="@android:color/black"
             />
@@ -124,7 +124,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Finalizar votacion" />
+                        android:text="@string/disable_voting" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Agregar candidato" />
+                        android:text="@string/add_candidate" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -185,7 +185,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tendencias" />
+                        android:text="@string/trends" />
 
                     <ImageView
                         android:layout_width="wrap_content"

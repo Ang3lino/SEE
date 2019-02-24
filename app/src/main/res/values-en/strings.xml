@@ -9,7 +9,7 @@
     <string name="error_field_required_username">username required</string>
     <string name="error_field_required_email">invalid email</string>
     <string name="error_field_required_password">password required</string>
-    <string name="error_field_required_confirm_password">passwords do not match</string>
+    <string name="error_field_required_confirm_password">the passwords do not match</string>
     <string name="exception_sql">SQL Server exception</string>
     <string name="exception_class_not_found">class not found exception</string>
     <string name="succesful_registration">Thank you for register with us</string>
@@ -24,6 +24,24 @@
     <string name="date_of_birth">birthday</string>
     <string name="start_voting">start voting</string>
     <string name="no_candidate_registered">no candidate has been registered</string>
-    <string name="deactivated_elections">elecciones desactivadas</string>
-    <string name="vote_not_effected">voto no efectuado</string>
+    <string name="deactivated_elections">deactivated elections</string>
+    <string name="vote_not_effected">vote not effected</string>
+    <string name="start_session">Start session</string>
+    <string name="select_ur_option">Select the option you want to perform</string>
+    <string name="watch_candidates">Watch candidates</string>
+    <string name="trends">trends</string>
+    <string name="vote">vote</string>
+    <string name="predictions">predictions</string>
+    <string name="register">Register</string>
+    <string name="gender">gender</string>
+    <string name="man">man</string>
+    <string name="woman">woman</string>
+    <string name="disable_voting">deactivate voting</string>
+    <string name="add_candidate">add candidate</string>
+    <string name="create_lobby">create a new lobby</string>
+    <string name="join_lobby">join a lobby</string>
+    <string name="number">number</string>
+    <string name="electoral_process">electoral process</string>
+    <string name="select_postulant">select your candidate</string>
+    <string name="select">select</string>
 </resources>

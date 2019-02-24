@@ -46,7 +46,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Registro"
+                    android:text="@string/register"
                     android:textSize="30dp"
                     android:textAppearance="?android:textAppearanceLarge" />
 
@@ -152,7 +152,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="sexo"/>
+                    android:text="@string/gender"/>
 
                 <RadioGroup
                     android:layout_marginRight="20dp"
@@ -161,7 +161,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:text="hombre"
+                        android:text="@string/man"
                         android:id="@+id/radbtn_male"
                         android:layout_marginHorizontal="20dp"
                         android:layout_width="wrap_content"
@@ -171,7 +171,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/radbtn_female"
-                        android:text="mujer" />
+                        android:text="@string/woman" />
                 </RadioGroup>
 
             </LinearLayout>
