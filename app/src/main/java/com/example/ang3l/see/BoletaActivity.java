@@ -54,9 +54,8 @@ public class BoletaActivity extends AppCompatActivity implements PostulantElecti
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject object = array.getJSONObject(i);
                             String name = object.getString("name");
-                            String match = object.getString("match");
+                            String match = "";
                             String email = object.getString("email");
-                            if (match.contains("null")) match = "partido sin definir";
                             postulants.add( new PostulantElectionItem(name, match, email) );
                         }
                         adapter = new PostulantElectionAdapter(this, postulants);

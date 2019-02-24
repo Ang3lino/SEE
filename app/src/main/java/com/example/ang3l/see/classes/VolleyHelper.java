@@ -12,8 +12,9 @@ public class VolleyHelper { // clase de ayuda para volley tipo singleton
     private RequestQueue requestQueue;
     private static Context context;
 
-    // que corresponda a TU servidor
-    // public static final String IP = "10.100.73.130";
+    // IP que corresponda a TU servidor
+
+    // public static final String IP = "10.100.76.207";
     public static final String IP = "192.168.1.67";
 
     // suponemos que el script php esta en el directorio see_php
