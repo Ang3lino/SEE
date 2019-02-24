@@ -44,4 +44,6 @@
     <string name="electoral_process">electoral process</string>
     <string name="select_postulant">select your candidate</string>
     <string name="select">select</string>
+    <string name="welcome_to_the_room">Welcome to the lobby: \ </string>
+    <string name="admin">administrator</string>
 </resources>
