@@ -56,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnLogin = findViewById(R.id.btn_login);
-        btnLogin.setOnClickListener(view -> {
-            onClickedLogin(view);
-        });
+        btnLogin.setOnClickListener(view -> onClickedLogin(view));
 
         btnJumper = findViewById(R.id.btn_jumper); // boton de prueba
         btnJumper.setVisibility(View.GONE);
