@@ -34,12 +34,12 @@ public class WatchPostulantActivity extends AppCompatActivity
     private RecyclerView.LayoutManager layoutManager;
     private FloatingActionButton fabAddPostulant;
 
-    private void initStaticPostulantItems() {
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "meade", "meade@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "anaya", "anaya@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "amlo", "amlo@gmail.com") );
-        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "bronco", "bronco@gmail.com") );
-    }
+//    private void initStaticPostulantItems() {
+//        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "meade", "meade@gmail.com") );
+//        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "anaya", "anaya@gmail.com") );
+//        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "amlo", "amlo@gmail.com") );
+//        postulantItems.add( new PostulantItem(R.mipmap.ic_postulant, "bronco", "bronco@gmail.com") );
+//    }
 
     private void fillListFromDB() {
         StringRequest request = new StringRequest(
