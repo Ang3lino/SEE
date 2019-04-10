@@ -63,6 +63,7 @@ public class BoletaActivity extends AppCompatActivity implements PostulantElecti
                         recycler.setAdapter(adapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                     }
 //                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                 },

@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtEmail;
     private TextView txtPassword;
     private TextView txtRegister;
+    private TextView txtIp;
 
     private TextInputLayout txtlayEmail;
     private TextInputLayout txtlayPassword;
@@ -71,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
 
         txtlayEmail = findViewById(R.id.txtlay_email);
         txtlayPassword = findViewById(R.id.txtlay_password);
+        txtIp = findViewById(R.id.txt_ip);
+
+        txtIp.setText("10.100.72.64");
+        // txtEmail.setText("AAAJ410118@hotmail.com");
+        // txtPassword.setText("root");
 
         builder = new AlertDialog.Builder(this);
     }
@@ -79,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
     private void onClickedLogin(View view) {
         boolean allFilledFields = true;
 
+        VolleyHelper.IP = txtIp.getText().toString();
         if (txtEmail.getText().toString().isEmpty()) {
             txtlayEmail.setError(getString(R.string.error_field_required_email));
             allFilledFields = false;
